@@ -1,12 +1,14 @@
 Package: image
-Title: What the Package Does (one line, title case)
+Title: Functions and Methods for Dealing With Colour Images
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: person("Aksel Anker", "Henriksen", role = c("aut", "cre"))
+Description: At its core this is a tool to change the colour space of images.
+             The rest is methods (class 'image') and functions that aid in this by 
+             offering ways to summarize, visualize and organize image data.
 Depends: R (>= 3.4.0)
 Suggests: png, jpg, tiff
 Imports: colorspace, grid
-License: What license is it under?
+License: GPL-2 | GPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
