@@ -8,6 +8,7 @@ img_colorspace.image <- function(img, c_in, c_out="HSV") {
 	img_colorspace.default(img, c_in, c_out)
 }
 
+#' @import colorspace
 img_colorspace.default <- function(img, c_in="RGB", c_out="HSV") {
 	
 	img_dim <- dim(img)
