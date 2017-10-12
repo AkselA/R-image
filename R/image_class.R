@@ -12,7 +12,15 @@ c_space <- function(x) {
 	x
 }
 
-as.image <- function(object, c_space="RGB") {
+as.image <- function(object, ...) {
+	UseMethod("as.image")
+}
+
+as.image.matrix <- function(object, ...) {
+	stop()
+}
+
+as.image.default <- function(object, c_space="RGB") {
 	d <- dim(object)
 	if (length(d) == 3 & d[3] >= 3) {
 		class(object) <- c("image", "array")

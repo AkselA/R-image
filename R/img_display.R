@@ -23,13 +23,13 @@ img_display.default <- function(img, bg=0:1, n.sq=16, interp=FALSE, ...) {
 
 # data(oslo)
 # img4 <- as.image(oslo)
-# img4 <- img_colorspace(img4, c_out="LAB")
+# img4 <- img_colorspace(img4, c_out="HSV")
 # summary(img4)
 
 # img_display(img4)
 
-# img4[,,1] <- tanh(img4[,,1]/90)
-# img4[,,1] <- 100 * img4[,,1] / max(img4[,,1])
+# img4[,,3] <- tanh(img4[,,3] * 1.5)
+# img4[,,3] <- img4[,,3] / max(img4[,,3])
 # summary(img4)
 
 # dev.new()

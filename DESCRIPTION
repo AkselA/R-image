@@ -1,7 +1,8 @@
 Package: image
 Title: Functions and Methods for Dealing With Colour Images
 Version: 0.0.0.9000
-Authors@R: person("Aksel Anker", "Henriksen", role = c("aut", "cre"))
+Authors@R: person("Aksel Anker", "Henriksen", email = "first.last@example.com",
+                   role = c("aut", "cre"))
 Description: At its core this is a tool to change the colour space of images.
              The rest is methods (class 'image') and functions that aid in this by 
              offering ways to summarize, visualize and organize image data.
