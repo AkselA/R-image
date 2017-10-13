@@ -1,3 +1,4 @@
+#' @export
 fitrange <- function(W, lower=0, upper=1) {
 	if(lower>upper) warning("upper bound must be strictly larger than lower bound")
 	newrange <- upper - lower
@@ -5,23 +6,28 @@ fitrange <- function(W, lower=0, upper=1) {
 	(W - min(W, na.rm=TRUE)) * (newrange/oldrange) + lower
 }
 
+#' @export
 is.image <- function(object) {
 	inherits(object, "image")
 }
 
+#' @export
 c_space <- function(x) {
 	attr(x, "c_space")
 }
 
+#' @export
 "c_space<-" <- function(x, value) {
 	    attr(x, "c_space") <- value
 	x
 }
 
+#' @export
 as.image <- function(object, ...) {
 	UseMethod("as.image")
 }
 
+#' @export
 as.image.matrix <- function(object, bwscale=FALSE) {
 	dim <- dim(object)
 	if (mode(object) != "character") {
@@ -40,6 +46,7 @@ as.image.matrix <- function(object, bwscale=FALSE) {
 	img
 }
 
+#' @export
 as.image.default <- function(object, c_space="RGB") {
 	d <- dim(object)
 	if (length(d) == 3 & d[3] %in% 3:4) {
@@ -51,6 +58,7 @@ as.image.default <- function(object, c_space="RGB") {
 	object
 }
 
+#' @export
 summary.image <- function(img, ...) {
 	summ <- apply(img, 3, function(x) summary(c(x), ...))
 	l <- list(summ, dim(img), c_space(img))
@@ -60,6 +68,7 @@ summary.image <- function(img, ...) {
 	l
 }
 
+#' @export
 img_stack <- function(l1, l2, l3, l4=NULL, c_space="RGB") {
 	d1 <- dim(l1)
 	

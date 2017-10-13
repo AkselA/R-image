@@ -1,9 +1,11 @@
 
 
+#' @export
 img_display <- function(img, ...) {
 	UseMethod("img_display")
 }
 
+#' @export
 img_display.image <- function(img, ...) {
 	if (c_space(img) != "RGB") {
 		img <- img_colorspace(img, c_out="RGB")
@@ -11,6 +13,7 @@ img_display.image <- function(img, ...) {
 	img_display.default(img, ...)
 }
 
+#' @export
 img_display.default <- function(img, bg=0:1, n.sq=16, interp=FALSE, ...) {
 	if (length(bg) == 1) bg <- c(bg, bg)
 	bg.m <- outer(1:n.sq, 1:n.sq, "+") %% 2

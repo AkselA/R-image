@@ -7,7 +7,7 @@ img544 <- readPNG("~/Documents/R/data/img544.png")
 
 palette <- readPNG("~/Documents/R/data/palette.png")	
 
-oslo <- readPNG("~/Documents/R/data/oslo.png")	
+oslo <- readPNG("~/Documents/R/data/oslo.png")
 
 mandrill <- readPNG("~/Documents/R/data/mandrill.png")	
 
@@ -24,9 +24,8 @@ colorchecker.hex <- "https://en.wikipedia.org/wiki/ColorChecker" %>%
                     read_html() %>%
                     html_nodes("td:nth-child(5)") %>%
                     html_text() %>%
-                    matrix(ncol=4) %>%
-                    t()
-                    
+                    matrix(ncol=6, byrow=TRUE)
+                                        
 colorchecker <- as.image(colorchecker.hex.bak)
 
 colorchecker.hex.bak <- structure(c(

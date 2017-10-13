@@ -1,14 +1,17 @@
 
+#' @export
 img_colorspace <- function(img, ...) {
 	UseMethod("img_colorspace")
 }
 
+#' @export
 img_colorspace.image <- function(img, c_in, c_out="HSV") {
 	if (missing(c_in)) c_in <- c_space(img)
 	img_colorspace.default(img, c_in, c_out)
 }
 
 #' @import colorspace
+#' @export
 img_colorspace.default <- function(img, c_in="RGB", c_out="HSV") {
 	
 	img_dim <- dim(img)
