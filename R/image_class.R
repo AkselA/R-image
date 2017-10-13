@@ -1,3 +1,9 @@
+fitrange <- function(W, lower=0, upper=1) {
+	if(lower>upper) warning("upper bound must be strictly larger than lower bound")
+	newrange <- upper - lower
+	oldrange <- max(W, na.rm=TRUE) - min(W, na.rm=TRUE)
+	(W - min(W, na.rm=TRUE)) * (newrange/oldrange) + lower
+}
 
 is.image <- function(object) {
 	inherits(object, "image")
@@ -16,13 +22,27 @@ as.image <- function(object, ...) {
 	UseMethod("as.image")
 }
 
-as.image.matrix <- function(object, ...) {
-	stop()
+as.image.matrix <- function(object, bwscale=FALSE) {
+	dim <- dim(object)
+	if (mode(object) != "character") {
+		zer <- matrix(rep(0, prod(dim)), dim[1])
+		if (bwscale) object <- fitrange(object, 0, 1)
+		img <- img_stack(zer, zer, object, c_space="HSV")
+	} else {
+        mat <- col2rgb(object, alpha=TRUE)
+		if (min(mat[4,]) == 255) {
+			arr <- array(c(mat[1,], mat[2,], mat[3,]), dim=c(dim, 3))
+		} else {
+			arr <- array(c(mat[1,], mat[2,], mat[3,], mat[4, ]), dim=c(dim, 4))
+		}
+		img <- "c_space<-"(arr, "RGB") / 255
+	}
+	img
 }
 
 as.image.default <- function(object, c_space="RGB") {
 	d <- dim(object)
-	if (length(d) == 3 & d[3] >= 3) {
+	if (length(d) == 3 & d[3] %in% 3:4) {
 		class(object) <- c("image", "array")
 	} else {
 		stop("Cannot be coerced into class 'image'")
