@@ -13,6 +13,7 @@ img_display.image <- function(img, ...) {
 	img_display.default(img, ...)
 }
 
+#' @import grid
 #' @export
 img_display.default <- function(img, bg=0:1, n.sq=16, interp=FALSE, ...) {
 	if (length(bg) == 1) bg <- c(bg, bg)

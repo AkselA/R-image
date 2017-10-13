@@ -1,22 +1,21 @@
 # example data
 library(png)
 
-img444 <- readPNG("~/Documents/R/data/img444.png")	
+img444.nat <- readPNG("~/Documents/R/data/img444.png", native=TRUE)
 
-img544 <- readPNG("~/Documents/R/data/img544.png")	
+img544.nat <- readPNG("~/Documents/R/data/img544.png", native=TRUE)
 
-palette <- readPNG("~/Documents/R/data/palette.png")	
+palette.nat <- readPNG("~/Documents/R/data/palette.png", native=TRUE)	
 
-oslo <- readPNG("~/Documents/R/data/oslo.png")
+oslo.nat <- readPNG("~/Documents/R/data/oslo.png", native=TRUE)
 
-mandrill <- readPNG("~/Documents/R/data/mandrill.png")	
+mandrill.nat <- readPNG("~/Documents/R/data/mandrill.png", native=TRUE)	
 
-flowers <- readPNG("~/Documents/R/data/flowers.png")	
+flowers.nat <- readPNG("~/Documents/R/data/flowers.png", native=TRUE)	
 
-macaws <- readPNG("~/Documents/R/data/macaws.png")	
+macaws.nat <- readPNG("~/Documents/R/data/macaws.png", native=TRUE)	
 
-house <- readPNG("~/Documents/R/data/house.png")	
-
+house.nat <- readPNG("~/Documents/R/data/house.png", native=TRUE)	
 
 library(rvest)
 
@@ -25,8 +24,8 @@ colorchecker.hex <- "https://en.wikipedia.org/wiki/ColorChecker" %>%
                     html_nodes("td:nth-child(5)") %>%
                     html_text() %>%
                     matrix(ncol=6, byrow=TRUE)
-                                        
-colorchecker <- as.image(colorchecker.hex.bak)
+
+colorchecker <- as.image(colorchecker.hex)
 
 colorchecker.hex.bak <- structure(c(
 	"#735244", "#d67e2c", "#383d96", "#f3f3f2", "#c29682", 

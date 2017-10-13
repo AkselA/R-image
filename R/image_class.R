@@ -7,6 +7,24 @@ fitrange <- function(W, lower=0, upper=1) {
 }
 
 #' @export
+native2hex <- function(object) {
+	hex <- packBits(intToBits(object))
+	mat <- matrix(strtoi(hex, base=16), 4)
+	col <- rgb(mat[1,], mat[2,], mat[3,], mat[4,], maxColorValue=255)
+	matrix(col, dim(object)[1], byrow=TRUE)
+}
+
+native2image <- function(object=img544.nat) {
+	hex <- packBits(intToBits(object))
+	mat <- matrix(strtoi(hex, base=16), 4)
+	arr <- array(c(mat[1,], mat[2,], mat[3,], mat[4,]), dim=c(dim(object)[2:1], 4))
+	img <- aperm(arr, c(2, 1, 3)) / 255
+    c_space(img) <- "RGB"
+    class(img) <- c("image", "array")
+    img
+}
+
+#' @export
 is.image <- function(object) {
 	inherits(object, "image")
 }
@@ -28,6 +46,11 @@ as.image <- function(object, ...) {
 }
 
 #' @export
+as.image.nativeRaster <- function(object) {
+	native2image(object)
+}
+
+#' @export
 as.image.matrix <- function(object, bwscale=FALSE) {
 	dim <- dim(object)
 	if (mode(object) != "character") {
@@ -42,6 +65,7 @@ as.image.matrix <- function(object, bwscale=FALSE) {
 			arr <- array(c(mat[1,], mat[2,], mat[3,], mat[4, ]), dim=c(dim, 4))
 		}
 		img <- "c_space<-"(arr, "RGB") / 255
+		class(img) <- c("image", "array")
 	}
 	img
 }
