@@ -1,4 +1,3 @@
-#' @export
 fitrange <- function(W, lower=0, upper=1) {
 	if(lower>upper) warning("upper bound must be strictly larger than lower bound")
 	newrange <- upper - lower
@@ -6,7 +5,6 @@ fitrange <- function(W, lower=0, upper=1) {
 	(W - min(W, na.rm=TRUE)) * (newrange/oldrange) + lower
 }
 
-#' @export
 native2hex <- function(object) {
 	hex <- packBits(intToBits(object))
 	mat <- matrix(strtoi(hex, base=16), 4)
@@ -14,7 +12,7 @@ native2hex <- function(object) {
 	matrix(col, dim(object)[1], byrow=TRUE)
 }
 
-native2image <- function(object=img544.nat) {
+native2image <- function(object) {
 	hex <- packBits(intToBits(object))
 	mat <- matrix(strtoi(hex, base=16), 4)
 	arr <- array(c(mat[1,], mat[2,], mat[3,], mat[4,]), dim=c(dim(object)[2:1], 4))

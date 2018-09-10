@@ -25,8 +25,8 @@ img_display.default <- function(img, bg=0:1, n.sq=16, interp=FALSE, ...) {
 	grid::grid.raster(img, interp=interp, ...)
 }
 
-# data(oslo)
-# img4 <- as.image(oslo)
+# data(oslo.nat)
+# img4 <- as.image(oslo.nat)
 # img4 <- img_colorspace(img4, c_out="HSV")
 # summary(img4)
 
