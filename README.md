@@ -10,14 +10,14 @@ library(devtools)
 install_github("AkselA/R-image")
 library(image)
 
-
 ### get and convert included dataset
 data(oslo.nat)
 img4 <- as.image(oslo.nat)
 
 
 ### edit in HSV
-img4 <- img_colorspace(img4, c_in="RGB", c_out="HSV")
+img <- img_colorspace(img4, c_in="RGB", c_out="HSV")
+img4 <- img
 summary(img4)
 
 img_display(img4)
@@ -33,18 +33,18 @@ img_display(img4)
 
 ### edit in CIELAB
 # intensify green/magenta
-img5 <- img_colorspace(img4, c_in="HSV", c_out="LAB")
+img5 <- img_colorspace(img, c_in="HSV", c_out="LAB")
 img5[,,2] <- img5[,,2] * 2
-summary(img5)
-
-img_display(img5)
-
-# intensify blue/yellow
-img5 <- img_colorspace(img4, c_in="HSV", c_out="LAB")
-img5[,,3] <- img5[,,3] * 2
 summary(img5)
 
 dev.new()
 img_display(img5)
 
+# intensify blue/yellow
+img5 <- img_colorspace(img, c_in="HSV", c_out="LAB")
+img5[,,3] <- img5[,,3] * 2
+summary(img5)
+
+dev.new()
+img_display(img5)
 ```
