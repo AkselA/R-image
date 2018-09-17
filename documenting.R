@@ -24,7 +24,7 @@ require(devtools)
 
 setwd("~/Documents/R/prosjekter")
 projname <- "image"
-create(projname)
+# create(projname)
 
 # turns objects found in "projname"/data.R (project root)
 # into data files available through data()
